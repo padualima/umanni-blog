@@ -16,21 +16,21 @@
         <div class="col-8">
           <div class="form-group">
             <%= form.label :title, "Título" %>
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :title, class: "form-control shadow-sm" %>
           </div>
         </div>
         <div class="col-4">
           <div class="form-group">
             <%= form.label :category_id, "Categoria" %>
-            <%= form.select :category_id, @categories, {}, class: "form-control" %>
+            <%= form.select :category_id, @categories, {}, class: "form-control shadow-sm" %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-9">
-          <div class="form-group">
+          <div class="form-group ">
             <%= form.label :subtitle, "Subtítulo" %>
-            <%= form.text_field :subtitle, class: "form-control" %>
+            <%= form.text_field :subtitle, class: "form-control shadow-sm" %>
           </div>
         </div>
         <div class="col-3">
@@ -50,9 +50,11 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <%= form.label :body, "Texto" %>
-          <%= form.hidden_field :body, id: :post_body %>
-          <%= form.rich_text_area :content, class: "form-control", input: "post_body"  %>
+          <div class="form-group">
+            <%= form.label :body, "Texto", for: "post_body" %>
+            <%= form.hidden_field :body, id: :post_body %>
+            <%= form.rich_text_area :content, class: "shadow-sm", input: "post_body" %>
+          </div>
         </div>
       </div>
       <br>

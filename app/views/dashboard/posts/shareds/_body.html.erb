@@ -1,5 +1,5 @@
+<% @posts.each do |post| %>
 <ul class="list-group">
-  <% @posts.each do |post| %>
   <li class="list-group-item">
     <%= link_to dashboard_post_path(post) do %>
     <div class="d-flex w-100 justify-content-between">
@@ -8,9 +8,9 @@
       </h4>
       <small>Criado em <%= l post.created_at, format: :long %></small>
     </div>
-    <p class="mb-1"><%= post.subtitle %></p>
+    <p class="mb-1"><%= post.subtitle.truncate(50) %></p>
     <% end %>
-    <small><%= sanitize post.body %></small>
+    <small><%= sanitize post.body.truncate(100) %></small>
     <p class= "text-right icons-size mb-0">
       <%= link_to edit_dashboard_post_path(post) do %>
       <i class="fas fa-edit"></i>
@@ -21,5 +21,6 @@
       <% end %>
     </p>
   </li>
-  <% end %>
 </ul>
+<br>
+<% end %>

@@ -4,10 +4,10 @@
     <div class="post-preview m-auto">
       <%= link_to site_post_path(post) do %>
       <h2 class="post-title">
-        <%= post.title %>
+        <%= post.title.truncate(100) %>
       </h2>
       <h3 class="post-subtitle">
-        <%= post.subtitle %>
+        <%= post.subtitle.truncate(100)%>
       </h3>
       <% end %>
       <% if current_user && post.user.id == current_user.id %>
