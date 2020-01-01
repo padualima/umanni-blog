@@ -1,11 +1,15 @@
 class Dashboard::PostsController < DashboardController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
     @posts = Post.where(status: true)
   end
 
   def new
     @post = Post.new
+  end
+
+  def show
+    
   end
 
   def edit

@@ -1,0 +1,25 @@
+<ul class="list-group">
+  <% @posts.each do |post| %>
+  <li class="list-group-item">
+    <%= link_to dashboard_post_path(post) do %>
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1">
+        <strong><%= post.title %></strong>
+      </h4>
+      <small>Criado em <%= l post.created_at, format: :long %></small>
+    </div>
+    <p class="mb-1"><%= post.subtitle %></p>
+    <% end %>
+    <small><%= sanitize post.body %></small>
+    <p class= "text-right icons-size mb-0">
+      <%= link_to edit_dashboard_post_path(post) do %>
+      <i class="fas fa-edit"></i>
+      <% end %> |
+      <%= link_to dashboard_post_path(post), method: :delete,
+      data: { confirm: "Tem certeza que deseja excluir?"} do %>
+      <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </p>
+  </li>
+  <% end %>
+</ul>
