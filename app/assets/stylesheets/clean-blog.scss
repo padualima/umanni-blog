@@ -55,7 +55,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #0085A1;
+  color: #187BBC;
 }
 
 blockquote {
@@ -82,13 +82,13 @@ blockquote {
 
 ::-moz-selection {
   color: #fff;
-  background: #0085A1;
+  background: #187BBC;
   text-shadow: none;
 }
 
 ::selection {
   color: #fff;
-  background: #0085A1;
+  background: #187BBC;
   text-shadow: none;
 }
 
@@ -174,13 +174,13 @@ img::-moz-selection {
     color: #212529;
   }
   #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
-    color: #0085A1;
+    color: #187BBC;
   }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a {
     color: #212529;
   }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-    color: #0085A1;
+    color: #187BBC;
   }
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -293,7 +293,7 @@ header.masthead .post-heading .meta a {
 
 .post-preview > a:focus, .post-preview > a:hover {
   text-decoration: none;
-  color: #0085A1;
+  color: #187BBC;
 }
 
 .post-preview > a > .post-title {
@@ -321,7 +321,7 @@ header.masthead .post-heading .meta a {
 
 .post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
   text-decoration: underline;
-  color: #0085A1;
+  color: #187BBC;
 }
 
 @media only screen and (min-width: 768px) {
@@ -382,7 +382,7 @@ header.masthead .post-heading .meta a {
 }
 
 .floating-label-form-group-with-focus label {
-  color: #0085A1;
+  color: #187BBC;
 }
 
 form .form-group:first-child .floating-label-form-group {
@@ -415,14 +415,14 @@ footer .copyright {
 }
 
 .btn-primary {
-  background-color: #0085A1;
-  border-color: #0085A1;
+  background-color: #187BBC;
+  border-color: #187BBC;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;
-  background-color: #00657b !important;
-  border-color: #00657b !important;
+  background-color: #1657BC !important;
+  border-color: #1657BC !important;
 }
 
 .btn-lg {

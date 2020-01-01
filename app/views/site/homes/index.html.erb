@@ -8,7 +8,7 @@
       <%= post.subtitle %>
     </h3>
   </a>
-  <% if post.user.id == current_user.id %>
+  <% if current_user && post.user.id == current_user.id %>
   <p class= "text-right icons-size p-0 m-0">
     <%= link_to edit_dashboard_post_path(post) do %>
     <i class="fa fa-edit"></i>
