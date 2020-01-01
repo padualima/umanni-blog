@@ -6,7 +6,7 @@
 <%= post.user.username %>
 <%= post.title %>
 <%= post.subtitle %>
-<%= post.body %>
+<%= sanitize post.body %>
 <%= post.category.description %>
 <%= link_to "Editar", edit_dashboard_post_path(post) %>
 <%= link_to "Excluir", dashboard_post_path(post), method: :delete,

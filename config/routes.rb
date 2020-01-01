@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'site/homes#index'
+  namespace :site do
+    get 'homes/index'
+  end
   namespace :dashboard do
     resources :posts
   end

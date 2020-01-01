@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 gem'actiontext',github:'kobaltz/actiontext',branch:'archive',require:'action_text'
 gem 'image_processing'
