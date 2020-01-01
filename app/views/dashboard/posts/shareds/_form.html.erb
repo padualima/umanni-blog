@@ -1,67 +1,69 @@
 <div class="col-xl-12 col-lg-12">
-  <div class="card shadow mb-4">
-    <!-- Card Header - Dropdown -->
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">Post</h6>
-    </div>
-    <!-- Card Body -->
-    <div class="card-body">
-      <%= form_with(model: [:dashboard, post] )do |form| %>
-      <% if post.errors.any? %>
-      <% post.errors.full_messages.each do |msg| %>
-      <%= msg %>
-      <% end %>
-      <% end %>
-      <div class="row">
-        <div class="col-8">
-          <div class="form-group">
-            <%= form.label :title, "Título" %>
-            <%= form.text_field :title, class: "form-control shadow-sm" %>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <%= form.label :category_id, "Categoria" %>
-            <%= form.select :category_id, @categories, {}, class: "form-control shadow-sm" %>
-          </div>
-        </div>
+  <div class="card-group">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Post</h6>
       </div>
-      <div class="row">
-        <div class="col-9">
-          <div class="form-group ">
-            <%= form.label :subtitle, "Subtítulo" %>
-            <%= form.text_field :subtitle, class: "form-control shadow-sm" %>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="form-group">
-            <%= form.label :status, "Deseja Publicar?" %>
-            <br>
-            <div class="form-check form-check-inline">
-              <%= form.radio_button(:status, true , checked: true)%>
-              <%= form.label :status , "Sim", value: true, class: "ml-1 form-check-label" %>
+      <!-- Card Body -->
+      <div class="card-body">
+        <%= form_with(model: [:dashboard, post] )do |form| %>
+        <% if post.errors.any? %>
+        <% post.errors.full_messages.each do |msg| %>
+        <%= msg %>
+        <% end %>
+        <% end %>
+        <div class="row">
+          <div class="col-8">
+            <div class="form-group">
+              <%= form.label :title, "Título" %>
+              <%= form.text_field :title, class: "form-control shadow-sm" %>
             </div>
-            <div class="form-check form-check-inline">
-              <%= form.radio_button(:status, false )%>
-              <%= form.label  :status , "Não", value: false, class: "ml-1 form-check-label" %>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <%= form.label :category_id, "Categoria" %>
+              <%= form.select :category_id, @categories, {}, class: "form-control shadow-sm" %>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <%= form.label :body, "Texto", for: "post_body" %>
-            <%= form.hidden_field :body, id: :post_body %>
-            <%= form.rich_text_area :content, class: "shadow-sm", input: "post_body" %>
+        <div class="row">
+          <div class="col-9">
+            <div class="form-group ">
+              <%= form.label :subtitle, "Subtítulo" %>
+              <%= form.text_field :subtitle, class: "form-control shadow-sm" %>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <%= form.label :status, "Deseja Publicar?" %>
+              <br>
+              <div class="form-check form-check-inline">
+                <%= form.radio_button(:status, true , checked: true)%>
+                <%= form.label :status , "Sim", value: true, class: "ml-1 form-check-label" %>
+              </div>
+              <div class="form-check form-check-inline">
+                <%= form.radio_button(:status, false )%>
+                <%= form.label  :status , "Não", value: false, class: "ml-1 form-check-label" %>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <%= form.label :body, "Texto", for: "post_body" %>
+              <%= form.hidden_field :body, id: :post_body %>
+              <%= form.rich_text_area :content, class: "shadow-sm responsive", input: "post_body" %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="text-center">
+          <%= form.submit "Confirmar", class: "btn btn-primary" %>
+        </div>
+        <% end %>
       </div>
-      <br>
-      <div class="text-center">
-        <%= form.submit "Confirmar", class: "btn btn-primary" %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

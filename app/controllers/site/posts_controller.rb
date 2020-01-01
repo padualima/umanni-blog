@@ -5,13 +5,17 @@ class Site::PostsController < ApplicationController
     @comment = Comment.new
   end
 
-  def comments
-    # code
+  def search
+    @posts = Post.search(search_params[:q])
   end
 
   private
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:q)
   end
 end

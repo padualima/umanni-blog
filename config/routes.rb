@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   namespace :site do
     get 'homes/index'
     get 'homes/about'
-    resources :posts, only: %i[show]
+    resources :posts, only: %i[show] do
+      get :search, on: :collection
+    end
     resources :comments, only: %i[create]
   end
   namespace :dashboard do
     get 'posts/inactive', to: "posts#inactive"
-    get 'homes/index'
     resources :comments, only: %i[create]
     resources :posts
   end

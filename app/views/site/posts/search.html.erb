@@ -1,4 +1,11 @@
-<%= render "site/homes/shareds/search" %>
+<h2 class="text-muted">
+  <% if @posts.any? %>
+  <%= pluralize(@posts.count, 'resultado') %> encontrados:
+  <% else %>
+  Nenhum resultado encontrado.
+  <% end %>
+</h2>
+
 <% @posts.each do |post| %>
 <div class="card shadow">
   <div class="card-body m-0">
@@ -29,10 +36,5 @@
     </div>
   </div>
 </div>
-<hr>
+<br>
 <% end %>
-
-<!-- Pager -->
-<div class="pag_boots float-right">
-  <%= paginate @posts, class:"btn btn-primary float-right" %>
-</div>

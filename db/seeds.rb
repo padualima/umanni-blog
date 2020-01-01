@@ -5,6 +5,9 @@ User.create!(
   password: 112233,
   password_confirmation: 112233
 )
-Category.create!(
-  description: "Startup"
-)
+categories = ["Startup", "Novidades", "Geral", "Mídia Social", "Atrções", "Política", "Religião"]
+categories.each do |catg|
+  Category.create!(
+    description: catg
+  )
+end

@@ -2,6 +2,9 @@ class Dashboard::PostsController < DashboardController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
     @posts = Post.where(status: true, user_id: current_user.id).order(created_at: :DESC)
+    @posts_published = Post.where(status: true, user_id: current_user.id)
+    @posts_inactived = Post.where(status: false, user_id: current_user.id)
+    @comments = Comment.where(post: @posts_published)
   end
 
   def new
@@ -20,6 +23,9 @@ class Dashboard::PostsController < DashboardController
 
   def inactive
     @posts = Post.where(status: false, user_id: current_user.id).order(created_at: :DESC)
+    @posts_published = Post.where(status: true, user_id: current_user.id)
+    @posts_inactived = Post.where(status: false, user_id: current_user.id)
+    @comments = Comment.where(post: @posts_published)
   end
 
   def create

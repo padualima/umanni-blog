@@ -1,24 +1,36 @@
-# README
+# Umanni Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-* Ruby version
+Umanni is a technology company formed by HR professionals. Therefore, we understand your daily life and the challenges of managing human capital.
+Our technology solutions are people-focused and easy to use.
+Executing HR strategy in an agile manner.
+However, for the best access this blog was created for the dissemination of techniques and news in the area of ​​HR, so all users can interact in comments of each publication.
+# Get-Starting!
 
-* System dependencies
+### Site
+> At the beginning of the application are listed links to access the site and create your account at Login.
 
-* Configuration
+> Below in the body of the site is listed the last 10 publications, and can be searched in the search field using keywords present in the published publication.
 
-* Database creation
+### Dashboard
 
-* Database initialization
+> Right after created your Umanni account, at Dashboard you can view information from your Heading posts.
 
-* How to run the test suite
+> In the Posts link you will have access to your inactivated and deactivated publications, being able to create, update, delete and even the option deactivation..
 
-* Services (job queues, cache servers, search engines, etc.)
+>In creating posts you will have the Trix Editor for further improvement of the posts.
 
-* Deployment instructions
+### Tools Used
+ - Ruby - 2.5.6
+ - Rails - 2.4.2.1
+ - Devise - (Login Users)
+ - Bootstrap - (Front-end)
+ - Font-awesome - (Icones)
+ - Kaminari - (Paginação)
+ - Pg_Search - (Pesquisas Banco de Dados)
+ - ActionText
+ - Image_processing
 
-* ...
+**Free Software, Hell Yeah \o/ !**

@@ -1,0 +1,14 @@
+<div class="text-right m-0 pb-4">
+  <%= form_with url: search_site_posts_path, method: :get, local: true,
+  class: "d-sm-inline-block form-inline shadow-sm bg-white rounded" do |form| %>
+  <div class="input-group ">
+    <%= form.search_field :q, class: "p-3 m-auto h-100 form-control bg-light border-0 small", required: true,
+    placeholder: 'Busca', value: params[:q] %>
+    <div class="input-group-append">
+      <button type="submit" name="commit" class="btn btn-primary d-flex align-content-stretch flex-wrap p-3 m-0 rounded-right" data-disable-with="Buscando...">
+        <i class="fas fa-search fa-sm"></i>
+      </button>
+    </div>
+  </div>
+  <% end %>
+</div>
