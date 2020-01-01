@@ -1,3 +1,6 @@
+<%= link_to "Sair", destroy_user_session_path, method: :delete %>
+<br><br>
+
 <% @posts.each do |post| %>
 <%= post.id %>
 <%= post.user.username %>
