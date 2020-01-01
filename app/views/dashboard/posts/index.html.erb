@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+<%= post.id %>
+<%= post.user.username %>
+<%= post.title %>
+<%= post.subtitle %>
+<%= post.body %>
+<%= post.category.description %>
+<%= link_to "Editar", edit_dashboard_post_path(post) %>
+<%= link_to "Excluir", dashboard_post_path(post), method: :delete,
+data: { confirm: "Tem certeza que deseja excluir?"} %>
+<br>
+<% end %>
+
+
+<br>
+<%= link_to "Novo Post", new_dashboard_post_path %>
