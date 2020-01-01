@@ -1,7 +1,7 @@
 class Dashboard::PostsController < DashboardController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    @posts = Post.where(status: true).order(created_at: :DESC)
+    @posts = Post.where(status: true, user_id: current_user.id).order(created_at: :DESC)
   end
 
   def new
@@ -18,7 +18,7 @@ class Dashboard::PostsController < DashboardController
   end
 
   def inactive
-    @posts = Post.where(status: false).order(created_at: :DESC)
+    @posts = Post.where(status: false, user_id: current_user.id).order(created_at: :DESC)
   end
 
   def create
