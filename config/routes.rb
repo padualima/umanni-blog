@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'site/homes#index'
   namespace :site do
     get 'homes/index'
+    resources :posts, only: %i[show]
+    resources :comments, only: %i[create]
   end
   namespace :dashboard do
     get 'posts/inactive', to: "posts#inactive"

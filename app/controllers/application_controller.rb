@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permited_params, if: :devise_controller?
 
+  before_action :store_current_location, :unless => :devise_controller?
+
   protected
 
   layout :layout_by_resource
@@ -13,8 +15,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_in_path_for(resource)
-    dashboard_homes_index_path
+  private
+
+  def store_current_location
+    store_location_for(:user, request.url)
+  end
+
+  def after_sign_out_path_for(resource)
+    request.referrer || root_path
   end
 
   def after_sign_out_path_for(resource)
@@ -24,4 +32,5 @@ class ApplicationController < ActionController::Base
   def configure_permited_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :image])
   end
+
 end

@@ -1,0 +1,82 @@
+<div class="row">
+  <!-- Area Chart -->
+  <div class="col-xl-12 col-lg-12">
+    <div class="card shadow">
+      <div class="card-body">        <!-- Title -->
+        <h1 class="mt-1"><%= @post.title %></h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#"><%= @post.user.username %></a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <small>Postado em <%= l @post.created_at, format: :long %></small>
+
+        <hr>
+        <div class="text-center">
+          <p class="lead">
+            <%= sanitize @post.body.gsub("\n", '<br>').html_safe %>
+          </p>
+        </div>
+        <hr>
+        <% unless current_user %>
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Comente:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" disabled rows="3">Para comentar faça login</textarea>
+              </div>
+              <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+            </form>
+          </div>
+        </div>
+        <% else %>
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Comente:</h5>
+          <div class="card-body">
+            <%= form_with model: @comment, url: site_comments_path,  local: true do |form| %>
+            <%= form.hidden_field :post_id, value: @post.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+
+            <div class='form-group'>
+              <%= form.text_area :body, class: 'form-control', required: true %>
+            </div>
+
+            <%= form.submit 'Enviar', class: 'btn btn-primary',
+            data: { disable_with: 'Enviando...' } %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+
+        <% @comments.each do |comment| %>
+        <!-- Single Comment -->
+        <div class="media m-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <div class='row'>
+              <div class='col'>
+                <strong><%= comment.user.username %></strong>
+              </div>
+              <div class='col text-right'>
+                <em data-toggle='tooltip' data-placement='top' title='<%= l comment.created_at, format: :long %>'>
+                  <%= time_ago_in_words comment.created_at %> atrás
+                </em>
+              </div>
+            </div>
+
+            <%= sanitize(comment.body.gsub("\n", '<br>')).html_safe %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

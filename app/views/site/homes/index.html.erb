@@ -1,31 +1,38 @@
 <% @posts.each do |post| %>
-<div class="post-preview">
-  <a href="post.html">
-    <h2 class="post-title">
-      <%= post.title %>
-    </h2>
-    <h3 class="post-subtitle">
-      <%= post.subtitle %>
-    </h3>
-  </a>
-  <% if current_user && post.user.id == current_user.id %>
-  <p class= "text-right icons-size p-0 m-0">
-    <%= link_to edit_dashboard_post_path(post) do %>
-    <i class="fa fa-edit"></i>
-    <% end %> |
-    <%= link_to dashboard_post_path(post), method: :delete,
-    data: { confirm: "Tem certeza que deseja excluir?"} do %>
-    <i class="fa fa-trash-alt"></i>
-    <% end %>
-  </p>
-  <p class="post-meta">Postado por
-    <a href="#"><%= post.user.username %></a>
-    em <%= l post.created_at, format: :long %>
-  </p>
-  <% end %>
-  <hr>
+<div class="card shadow">
+  <div class="card-body m-auto">
+    <div class="post-preview m-auto">
+      <%= link_to site_post_path(post) do %>
+      <h2 class="post-title">
+        <%= post.title %>
+      </h2>
+      <h3 class="post-subtitle">
+        <%= post.subtitle %>
+      </h3>
+      <% end %>
+      <% if current_user && post.user.id == current_user.id %>
+      <p class= "text-right icons-size p-0 m-0">
+        <%= link_to edit_dashboard_post_path(post) do %>
+        <i class="fa fa-edit"></i>
+        <% end %> |
+        <%= link_to dashboard_post_path(post), method: :delete,
+        data: { confirm: "Tem certeza que deseja excluir?"} do %>
+        <i class="fa fa-trash-alt"></i>
+        <% end %>
+      </p>
+      <p class="post-meta">Postado por
+        <a href="#"><%= post.user.username %></a>
+        em <%= l post.created_at, format: :long %>
+      </p>
+      <% end %>
+    </div>
+  </div>
 </div>
+<br>
 <% end %>
+
+<hr>
+
 <!-- Pager -->
 <div class="clearfix">
   <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
