@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: umanni-blog_production
-  username: umanni-blog
+  username: padualima
   password: <%= ENV['UMANNI-BLOG_DATABASE_PASSWORD'] %>
