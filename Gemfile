@@ -34,6 +34,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'jquery-easing-rails'
+gem 'kaminari'
 
 gem'actiontext',github:'kobaltz/actiontext',branch:'archive',require:'action_text'
 gem 'image_processing'

@@ -1,7 +1,7 @@
 <%= render "layouts/shareds/site/search" %>
 <% @posts.each do |post| %>
 <div class="card shadow">
-  <div class="card-body m-auto">
+  <div class="card-body m-0">
     <div class="post-preview m-auto">
       <%= link_to site_post_path(post) do %>
       <h2 class="post-title">
@@ -35,6 +35,6 @@
 <hr>
 
 <!-- Pager -->
-<div class="clearfix">
-  <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+<div class="pag_boots float-right">
+  <%= paginate @posts, class:"btn btn-primary float-right" %>
 </div>
