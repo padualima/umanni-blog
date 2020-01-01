@@ -14,27 +14,24 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "inicio", root_path %>
+          <%= link_to "inicio", root_path, class: "nav-link shadow-logo" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">Sobre Nós</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="post.html">Contato</a>
+          <%= link_to "Sobre nós", site_homes_about_path, class: "nav-link shadow-logo" %>
         </li>
         <% if current_user %>
-        <li class="nav-item">
+        <li class="nav-item shadow-logo">
           <%= link_to dashboard_homes_index_path, class: "nav-link" do %>
           <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard
           <% end %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item shadow-logo">
           <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fas fa-sign-out-alt"></i> Sair
           <% end %>
         </li>
         <% else %>
-        <li class="nav-item">
+        <li class="nav-item shadow-logo">
           <%= link_to dashboard_homes_index_path, class: "nav-link" do %>
           <i class="fas fa-sign-in-alt"></i> Login
           <% end %>

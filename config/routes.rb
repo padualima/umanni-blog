@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'site/homes#index'
   namespace :site do
     get 'homes/index'
+    get 'homes/about'
     resources :posts, only: %i[show]
     resources :comments, only: %i[create]
   end
