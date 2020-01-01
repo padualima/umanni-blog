@@ -1,40 +1,48 @@
 class Dashboard::PostsController < DashboardController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    @posts = Post.where(status: true)
+    @posts = Post.where(status: true).order(created_at: :DESC)
   end
 
   def new
     @post = Post.new
+    prepare_form
   end
 
   def show
-    
+
   end
 
   def edit
-    # code
+    prepare_form
   end
 
   def inactive
-    @posts = Post.where(status: false)
+    @posts = Post.where(status: false).order(created_at: :DESC)
   end
 
   def create
     @post = Post.new(post_params)
     @post.update(user_id: current_user.id)
+
     if @post.save
       redirect_to dashboard_posts_path
     else
       render :new
+      prepare_form
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to dashboard_posts_path
+      if @post.status == true
+        redirect_to dashboard_posts_path
+      else
+        redirect_to dashboard_posts_inactive_path
+      end
     else
       render :edit
+      prepare_form
     end
   end
 
@@ -44,6 +52,10 @@ class Dashboard::PostsController < DashboardController
   end
 
   private
+
+  def prepare_form
+    @categories = Category.all.map { |catg| [catg.description, catg.id] }
+  end
 
   def set_post
     @post = Post.find(params[:id])

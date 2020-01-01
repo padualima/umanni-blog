@@ -15,34 +15,42 @@
       <div class="row">
         <div class="col-8">
           <div class="form-group">
-            <%= form.label :title %>
+            <%= form.label :title, "Título" %>
             <%= form.text_field :title, class: "form-control" %>
           </div>
         </div>
         <div class="col-4">
           <div class="form-group">
-            <%= form.label :category_id %>
-            <%= form.text_field :category_id, class: "form-control" %>
+            <%= form.label :category_id, "Categoria" %>
+            <%= form.select :category_id, @categories, {}, class: "form-control" %>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-10">
+        <div class="col-9">
           <div class="form-group">
-            <%= form.label :subtitle %>
+            <%= form.label :subtitle, "Subtítulo" %>
             <%= form.text_field :subtitle, class: "form-control" %>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-3">
           <div class="form-group">
-            <%= form.label :status %>
-            <%= form.check_box :status, {checked: true, class: "form-control"} %>
+            <%= form.label :status, "Deseja Publicar?" %>
+            <br>
+            <div class="form-check form-check-inline">
+              <%= form.radio_button(:status, true , checked: true)%>
+              <%= form.label :status , "Sim", value: true, class: "ml-1 form-check-label" %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= form.radio_button(:status, false )%>
+              <%= form.label  :status , "Não", value: false, class: "ml-1 form-check-label" %>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <%= form.label :body %>
+          <%= form.label :body, "Texto" %>
           <%= form.hidden_field :body, id: :post_body %>
           <%= form.rich_text_area :content, class: "form-control", input: "post_body"  %>
         </div>
