@@ -38,6 +38,10 @@ p {
 }
 
 
+.shadow-logo {
+  -webkit-filter: drop-shadow(1px 1px 0.1em #222);
+  filter: drop-shadow(1px 1px 0.1em  #222);
+}
 
 h1,
 h2,
@@ -47,6 +51,12 @@ h5,
 h6 {
   font-weight: 800;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1{
+  text-shadow: grey 0.1em 0.1em 0.2em
+}
+.subheading{
+  text-shadow: black 0.1em 0.1em 0.2em
 }
 
 a {

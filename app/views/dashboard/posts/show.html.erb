@@ -1,15 +1,12 @@
 <%= render "dashboard/posts/shareds/page_heading" %>
-<%= link_to "Retornar", dashboard_posts_path %>
-<br>
+<%= link_to dashboard_posts_path, class: "btn btn-light mb-2" do %>
+<i class="fas fa-chevron-left"></i> Retorne
+<% end %>
+
 <div class="row">
   <!-- Area Chart -->
   <div class="col-xl-12 col-lg-12">
     <div class="card shadow">
-      <!-- Card Header - Dropdown -->
-      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-        <h6 class="m-0 font-weight-bold text-primary">Visualizando Post</h6>
-      </div>
-      <!-- Card Body -->
       <div class="card-body">        <!-- Title -->
         <h1 class="mt-1"><%= @post.title %></h1>
 
@@ -31,22 +28,46 @@
           </p>
         </div>
         <hr>
-        <!-- Single Comment -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Comente:</h5>
+          <div class="card-body">
+            <%= form_with model: @comment, url: dashboard_comments_path,  local: true do |form| %>
+            <%= form.hidden_field :post_id, value: @post.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+
+            <div class='form-group'>
+              <%= form.text_area :body, class: 'form-control', required: true %>
+            </div>
+
+            <%= form.submit 'Enviar', class: 'btn btn-primary',
+            data: { disable_with: 'Enviando...' } %>
+            <% end %>
           </div>
         </div>
+
+
+        <% @comments.each do |comment| %>
         <!-- Single Comment -->
-        <div class="media mb-4">
+        <div class="media m-4">
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <div class='row'>
+              <div class='col'>
+                <strong><%= comment.user.username %></strong>
+              </div>
+              <div class='col text-right'>
+                <em data-toggle='tooltip' data-placement='top' title='<%= l comment.created_at, format: :long %>'>
+                  <%= time_ago_in_words comment.created_at %> atrás
+                </em>
+              </div>
+            </div>
+
+            <%= sanitize(comment.body.gsub("\n", '<br>')).html_safe %>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>

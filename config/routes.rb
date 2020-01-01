@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     get 'posts/inactive', to: "posts#inactive"
     get 'homes/index'
+    resources :comments, only: %i[create]
     resources :posts
   end
   devise_for :users
