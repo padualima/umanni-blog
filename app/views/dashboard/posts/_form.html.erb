@@ -1,30 +1,57 @@
-<%= form_with(model: [:dashboard, post] )do |form| %>
-  <% if post.errors.any? %>
-    <% post.errors.full_messages.each do |msg| %>
+<div class="col-xl-12 col-lg-12">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Post</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <%= form_with(model: [:dashboard, post] )do |form| %>
+      <% if post.errors.any? %>
+      <% post.errors.full_messages.each do |msg| %>
       <%= msg %>
-    <% end %>
-  <% end %>
-  <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control" %>
+      <% end %>
+      <% end %>
+      <div class="row">
+        <div class="col-8">
+          <div class="form-group">
+            <%= form.label :title %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :category_id %>
+            <%= form.text_field :category_id, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+          <div class="form-group">
+            <%= form.label :subtitle %>
+            <%= form.text_field :subtitle, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-group">
+            <%= form.label :status %>
+            <%= form.check_box :status, {checked: true, class: "form-control"} %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= form.label :body %>
+          <%= form.hidden_field :body, id: :post_body %>
+          <%= form.rich_text_area :content, class: "form-control", input: "post_body"  %>
+        </div>
+      </div>
+      <br>
+      <div class="text-center">
+        <%= form.submit "Confirmar", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= form.label :subtitle %>
-    <%= form.text_field :subtitle, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :body %>
-    <%= form.hidden_field :body, id: :post_body %>
-    <%= form.rich_text_area :content, input: "post_body" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :status %>
-    <%= form.check_box :status, {checked: true, class: "form-control"} %>
-  </div>
-
-  <%= form.submit "Confirmar" %>
-<% end %>
+</div>

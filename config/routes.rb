@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get 'homes/index'
   end
   namespace :dashboard do
+    get 'posts/inactive', to: "posts#inactive"
+    get 'homes/index'
     resources :posts
   end
   devise_for :users

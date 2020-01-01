@@ -1,4 +1,4 @@
-class Dashboard::PostsController < ApplicationController
+class Dashboard::PostsController < DashboardController
   before_action :set_post, only: [:edit, :update, :destroy]
   def index
     @posts = Post.where(status: true)
@@ -10,6 +10,10 @@ class Dashboard::PostsController < ApplicationController
 
   def edit
     # code
+  end
+
+  def inactive
+    @posts = Post.where(status: false)
   end
 
   def create
