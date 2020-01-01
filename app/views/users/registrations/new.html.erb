@@ -1,37 +1,47 @@
-<h2>Sign up</h2>
-
+<%= render "users/shared/navigation" %>
+<h3 class="login-heading mb-4">Bem Vindo ao Blog da Umanni!</h3>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autocomplete: "username" %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+<div class="form-label-group">
+  <%= f.text_field :name, autofocus: true, autocomplete: "name",
+  id:"inputEmail", class: "form-control", placeholder: "Full name" %>
+  <label><%= f.label :name, for: "inputEmail" %></label>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
+<div class="form-label-group">
+  <%= f.text_field :username, autocomplete: "username",
+  id:"inputEmail", class: "form-control", placeholder: "Your username" %>
+  <label><%= f.label :username, for: "inputEmail" %></label>
+</div>
+
+<div class="form-label-group">
+  <%= f.email_field :email, autofocus: true, autocomplete: "email",
+  id:"inputEmail", class: "form-control", placeholder: "Email address" %>
+  <label><%= f.label :email, for: "inputEmail" %></label>
+</div>
+
+<div class="form-label-group">
+  <%= f.password_field :password, autocomplete: "new-password",
+  id: "inputPassword", class: "form-control", placeholder: "Password" %>
+  <label><%= f.label :password, for:"inputPassword" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <% end %>
+  </label>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<div class="form-label-group">
+  <%= f.password_field :password_confirmation, autocomplete: "new-password",
+  id: "inputPassword", class: "form-control", placeholder: "Password" %>
+  <label><%= f.label :password_confirmation, for:"inputPassword" %></label>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+
+<%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+<div class="text-center">
+  <%= render "users/shared/links" %>
+</div>
 <% end %>
-
-<%= render "users/shared/links" %>
+</div>
+<%= render "users/shared/footer" %>
